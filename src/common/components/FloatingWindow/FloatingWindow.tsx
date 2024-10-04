@@ -12,7 +12,7 @@ const FloatingWindow: React.FC<FloatingWindowProps> = () => {
       <ScrollView
         className="floating_window_content"
         scrollY
-        style={{ height: '70vh' }} // 确保内容可以滚动
+        style={{ height: '70vh', padding: '10rpx' }}
       >
         <Page1 />
         <Page2 />
@@ -26,12 +26,8 @@ const FloatingWindow: React.FC<FloatingWindowProps> = () => {
 const Page1 = () => {
   return (
     <View className="page">
-      <View>木犀课栈隐私条例</View>
-      作为华中师范大学学生自主运营的互联网技术团队，木犀一直高度重
-      视隐私保护、郑重对待相应责任，并已将隐私保护的要求融入日常业务活动流程。
-      希望您仔细阅读本条例，详细了解我们对信息的收集、使用方式，以便您更好地
-      了解我们的服务并作出适当的选择。若您使用木犀课栈的服务，即表示您认同我
-      们在本条例中所述内容。
+      <View className="page-title">木犀课栈隐私条例</View>
+      作为华中师范大学学生自主运营的互联网技术团队，木犀一直高度重视隐私保护、郑重对待相应责任，并已将隐私保护的要求融入日常业务活动流程。希望您仔细阅读本条例，详细了解我们对信息的收集、使用方式，以便您更好地了解我们的服务并作出适当的选择。若您使用木犀课栈的服务，即表示您认同我们在本条例中所述内容。
     </View>
   );
 };

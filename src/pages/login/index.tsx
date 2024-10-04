@@ -58,6 +58,27 @@ const Login: React.FC<LoginProps> = () => {
       });
     }
   };
+  const handleLoginWithYouke = () => {
+    if (!userInfo) {
+      void Taro.switchTab({
+        url: '/pages/main/index',
+      });
+      void Taro.setStorage({
+        key: 'shortToken',
+        data: ' ',
+      });
+
+      void Taro.setStorage({
+        key: 'longToken',
+        data: ' ',
+      });
+    } else {
+      void Taro.showToast({
+        icon: 'error',
+        title: '请确认隐私条例',
+      });
+    }
+  };
 
   return (
     <View className="login">
@@ -84,6 +105,13 @@ const Login: React.FC<LoginProps> = () => {
           <View className="login_main_button">
             <Button className="login_button" onClick={handleLoginClick}>
               学号登录
+            </Button>
+            <Button
+              className="login_button"
+              style={{ backgroundColor: 'white', color: 'grey' }}
+              onClick={handleLoginWithYouke}
+            >
+              游客登录
             </Button>
           </View>
         </View>
