@@ -16,6 +16,29 @@ const config = {
     '@taro-hooks/plugin-react',
     '@taro-hooks/plugin-auto-import',
     '@tarojs/plugin-html',
+    // 添加 Rspack 优化插件进行小程序构建优化
+    [
+      'muxi-tarojs-plugin-rspack',
+      {
+        // 启用构建分析（可选）
+        analyze: false,
+
+        // 启用压缩优化
+        compress: true,
+
+        // 优化选项
+        optimization: {
+          // 启用代码分割优化
+          splitChunks: true,
+
+          // 启用 Tree Shaking
+          treeShaking: true,
+
+          // 启用 SWC 编译优化
+          useSwc: true,
+        },
+      },
+    ],
     // [
     //   'taro-plugin-compiler-optimization',
     //   {
@@ -70,6 +93,7 @@ const config = {
       ],
     },
     webpackChain(chain) {
+      // 原有的 Tailwind CSS 配置
       // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
       chain.merge({
         plugin: {
