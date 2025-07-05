@@ -16,10 +16,33 @@ const config = {
     '@taro-hooks/plugin-react',
     '@taro-hooks/plugin-auto-import',
     '@tarojs/plugin-html',
-    // 添加 Rspack 优化插件进行小程序构建优化
+    // 添加 Rspack 优化插件进行小程序构建优化和热更新
     [
       'muxi-tarojs-plugin-rspack',
       {
+        // 🔥 热更新配置
+        hotReload: true, // 启用热更新（默认 true）
+        useDevServer: true, // 使用开发服务器（推荐）
+        port: 8080, // 开发服务器端口
+
+        // 监听选项
+        watchOptions: {
+          aggregateTimeout: 200, // 文件变化后延迟编译时间
+          poll: false, // 不使用轮询
+          ignored: /node_modules/, // 忽略 node_modules
+        },
+
+        // 代理配置（可选）
+        proxy: {
+          '/api': {
+            target: 'http://localhost:3000',
+            changeOrigin: true,
+            pathRewrite: {
+              '^/api': '',
+            },
+          },
+        },
+
         // 启用构建分析（可选）
         analyze: false,
 
